@@ -10,10 +10,9 @@ use Mantix\KvkApi\Company\Company;
 use Mantix\KvkApi\Exceptions\KvkApiException;
 
 class Client implements KvkApiClientInterface {
-    private const API_VERSION = 'v2';
     private const ENDPOINTS = [
-        'SEARCH' => 'zoeken',
-        'BASE_PROFILE' => 'basisprofielen',
+        'SEARCH' => 'v2/zoeken',
+        'BASE_PROFILE' => 'v1/basisprofielen',
     ];
     private const RATE_LIMIT = 0.2; // seconds between requests
 
@@ -28,7 +27,7 @@ class Client implements KvkApiClientInterface {
 
     public function __construct(ClientInterface $httpClient) {
         $this->httpClient = $httpClient;
-        $this->baseUrl = "https://api.kvk.nl/api/" . self::API_VERSION . '/';
+        $this->baseUrl = 'https://api.kvk.nl/api/';
     }
 
     /**
@@ -81,7 +80,7 @@ class Client implements KvkApiClientInterface {
      */
     public function getBaseProfile(string $kvkNumber): Company {
         try {
-            $url = $this->baseUrl . self::ENDPOINTS['BASE_PROFILE'] . '/' . $kvkNumber;
+            $url = $this->baseUrl . self::ENDPOINTS['BASE_PROFILE'] . '/' . $kvkNumber . '/hoofdvestiging';
             $response = $this->getCachedOrFetch($url);
             $data = $this->decodeJson($response);
 
@@ -90,7 +89,7 @@ class Client implements KvkApiClientInterface {
             return new Company(
                 $data->kvkNummer ?? '',
                 $data->vestigingsnummer ?? null,
-                $data->handelsnaam ?? $data->naam ?? null,
+                $data->eersteHandelsnaam ?? $data->handelsnaam ?? $data->naam ?? null,
                 $this->formatAddresses($data->adressen ?? null),
                 $data->websites ?? null
             );
