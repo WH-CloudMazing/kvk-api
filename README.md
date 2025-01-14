@@ -1,76 +1,126 @@
-# KvK API client (Dutch Chamber of Commerce)
+# KvK API Client (Dutch Chamber of Commerce)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/kvk-api.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/kvk-api)
-[![Tests](https://github.com/vormkracht10/kvk-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/kvk-api/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/kvk-api.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/kvk-api)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mantix/kvk-api.svg?style=flat-square)](https://packagist.org/packages/mantix/kvk-api)
+[![Tests](https://github.com/mantix/kvk-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/mantix/kvk-api/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/mantix/kvk-api.svg?style=flat-square)](https://packagist.org/packages/mantix/kvk-api)
 
-PHP package to communicate with the business register of the Dutch Chamber of Commerce.
+A robust PHP package for interacting with the Dutch Chamber of Commerce (KvK) API. This package is a fork of `vormkracht10/kvk-api` with additional features and improvements.
 
-At the moment it is only possible to search by company name. The result will contain the following data:
+## Features
 
-<ul>
-  <li>KvK number</li>
-  <li>Establishment number</li>
-  <li>Tradename</li>
-  <li>Address(es) (type, full address, street, housenumber, zip, city and country)</li>
-  <li>Website(s)</li>
-</ul>
+- Search companies by name, KvK number, RSIN, or establishment number
+- Fetch detailed company profiles
+- Built-in caching to minimize API calls
+- Rate limiting to respect API guidelines
+- Comprehensive error handling
+- PSR-7 compliant
+
+## Data Available
+
+For each company, you can retrieve:
+- KvK number
+- Establishment number
+- Trade name(s)
+- Address(es) including:
+  - Type
+  - Full address
+  - Street
+  - House number
+  - Postal code
+  - City
+  - Country
+- Website(s)
+- Basic profile information (new)
 
 ## Installation
 
-You can install the package via composer:
+Install the package via Composer:
 
 ```bash
-composer require vormkracht10/kvk-api
+composer require mantix/kvk-api
 ```
 
-## Upgrade guide
+Required dependencies:
+```bash
+composer require illuminate/support
+composer require psr/http-message
+composer require guzzlehttp/guzzle
+```
 
-See the [upgrade guide](docs/upgrade.md) for more information on what has changed recently.
+## Getting Started
 
-## Usage
-
-> Note: if you don't have an API key yet, get yours at the [developer portal](https://developers.kvk.nl/) of the Chamber of Commerce
+First, obtain your API key from the [KvK Developer Portal](https://developers.kvk.nl/).
 
 ```php
-use Vormkracht10\KvkApi\ClientFactory;
-$apiKey = '<KVK_API_KEY>';
+use Mantix\KvkApi\ClientFactory;
 
-// Optional SSL certificate
-$rootCertificate = '<PATH_TO_SSL_CERT>';
+$apiKey = '<YOUR_KVK_API_KEY>';
+$kvk = ClientFactory::create($apiKey);
+```
 
-$kvk = ClientFactory::create($apiKey, $rootCertificate);
+### Basic Company Search
 
+```php
 // Search by company name
-$companies = $kvk->search('Vormkracht10');
+$companies = $kvk->search('Mantix');
+
+// Search with pagination
+$kvk->setPage(1)
+    ->setResultsPerPage(10);
+$companies = $kvk->search('Mantix');
 ```
 
-### Search with additional parameters
+### Specific Searches
 
 ```php
-$companies = $kvk->search('Vormkracht10', [
-'pagina' => 1,
-'resultatenPerPagina' => 10
-]);
-```
-
-### Set page and results per page before searching
-
-```php
-$kvk->setPage(2);
-$kvk->setResultsPerPage(20);
-```
-
-### Search by KvK number
-
-```php
+// By KvK number
 $companies = $kvk->searchByKvkNumber('12345678');
+
+// By RSIN
+$companies = $kvk->searchByRsin('123456789');
+
+// By establishment number
+$companies = $kvk->searchByVestigingsnummer('000012345678');
 ```
 
-### Search by RSIN
+### Get Company Profile
 
 ```php
-$companies = $kvk->searchByRSIN('12345678');
+// Fetch detailed company profile
+$profile = $kvk->getBaseProfile('12345678');
+```
+
+### Advanced Usage
+
+```php
+// Search with additional parameters
+$companies = $kvk->search('Mantix', [
+    'pagina' => 1,
+    'resultatenPerPagina' => 10,
+    // Add any other API parameters
+]);
+
+// Using SSL certificate
+$rootCertificate = '<PATH_TO_SSL_CERT>';
+$kvk = ClientFactory::create($apiKey, $rootCertificate);
+```
+
+## Error Handling
+
+The package includes comprehensive error handling:
+
+```php
+use Mantix\KvkApi\Exceptions\KvkApiException;
+
+try {
+    $companies = $kvk->search('Mantix');
+} catch (KvkApiException $e) {
+    // Handle API-specific errors
+    echo $e->getMessage();
+} catch (\Exception $e) {
+    // Handle general errors
+    echo $e->getMessage();
+}
 ```
 
 ## Testing
@@ -79,14 +129,20 @@ $companies = $kvk->searchByRSIN('12345678');
 composer test
 ```
 
-## Changelog
+## Documentation
 
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+- [Upgrade Guide](docs/upgrade.md)
+- [Changelog](CHANGELOG.md)
+- [KvK API Documentation](https://developers.kvk.nl/documentation)
+
+## Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Credits
 
--   [Bas van Dinther](https://github.com/Baspa)
--   [All Contributors](../../contributors)
+- [Original package by Vormkracht10](https://github.com/vormkracht10/kvk-api)
+- [All Contributors](../../contributors)
 
 ## License
 

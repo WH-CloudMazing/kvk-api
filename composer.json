@@ -1,50 +1,55 @@
 {
-    "name": "vormkracht10/kvk-api",
+    "name": "mantix/kvk-api",
     "description": "KvK API client (Dutch Chamber of Commerce API)",
     "keywords": [
-        "Vormkracht10",
-        "kvk-api"
+        "Mantix",
+        "kvk-api",
+        "kvk",
+        "chamber-of-commerce",
+        "api-client"
     ],
-    "homepage": "https://github.com/vormkracht10/kvk-api",
+    "homepage": "https://github.com/mantix/kvk-api",
     "license": "MIT",
     "authors": [
         {
-            "name": "Bas van Dinther",
-            "email": "bas@vormkracht10.nl",
-            "role": "Developer"
+            "name": "Pieter Naber",
+            "email": "pieter@mantix.nl",
+            "role": "Developer and owner"
         }
     ],
     "require": {
         "php": "^7.4|^8.0|^8.1|^8.2|^8.3",
-        "guzzlehttp/guzzle": "^7.0",
-        "illuminate/support": "^8.0|^9.0|^10.0|^11.0"
+        "guzzlehttp/guzzle": "^7.9",
+        "illuminate/support": "^11.37",
+        "nesbot/carbon": "^3.8",
+        "psr/http-message": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.0",
-        "pestphp/pest": "^1.20",
+        "mockery/mockery": "^1.6",
         "phpstan/phpstan": "^1.12",
+        "phpunit/phpunit": "^9.6",
         "spatie/ray": "^1.28"
     },
     "autoload": {
         "psr-4": {
-            "Vormkracht10\\KvKApi\\": "src"
+            "Mantix\\KvkApi\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vormkracht10\\KvKApi\\Tests\\": "tests"
+            "Mantix\\KvkApi\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "analyse": "phpstan analyse",
+        "format": "php-cs-fixer fix --allow-risky=yes",
+        "check-style": "php-cs-fixer fix --dry-run --allow-risky=yes"
     },
     "config": {
-        "sort-packages": true,
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true

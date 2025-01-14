@@ -1,9 +1,8 @@
 <?php
 
-namespace Vormkracht10\KvKApi\Company;
+namespace Mantix\KvkApi\Company;
 
-class Company
-{
+class Company {
     private string $kvkNumber;
     private ?string $establishmentNumber;
     private ?string $tradeName;
@@ -30,26 +29,22 @@ class Company
         $this->websites = $websites;
     }
 
-    public function getKvkNumber(): string
-    {
+    public function getKvkNumber(): string {
         return $this->kvkNumber;
     }
 
-    public function getEstablishmentNumber(): ?string
-    {
+    public function getEstablishmentNumber(): ?string {
         return $this->establishmentNumber;
     }
 
-    public function getTradeName(): ?string
-    {
+    public function getTradeName(): ?string {
         return $this->tradeName;
     }
 
     /**
      * @return array<Address>|null
      */
-    public function getAddresses(): ?array
-    {
+    public function getAddresses(): ?array {
         if ($this->addresses === null) {
             return null;
         }
@@ -73,16 +68,14 @@ class Company
     /**
      * @return array<string>|null
      */
-    public function getWebsites(): ?array
-    {
+    public function getWebsites(): ?array {
         return $this->websites;
     }
 
     /**
      * @return array<string, mixed>
      */
-    public function get(): array
-    {
+    public function get(): array {
         return [
             'kvkNumber' => $this->kvkNumber,
             'establishmentNumber' => $this->establishmentNumber,

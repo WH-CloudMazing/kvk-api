@@ -1,9 +1,8 @@
 <?php
 
-namespace Vormkracht10\KvKApi\Company;
+namespace Mantix\KvkApi\Company;
 
-class Address
-{
+class Address {
     private string $type;
     private ?string $street;
     private ?int $houseNumber;
@@ -27,41 +26,34 @@ class Address
         $this->country = $country;
     }
 
-    public function getType(): string
-    {
+    public function getType(): string {
         return $this->type;
     }
 
-    public function getStreet(): ?string
-    {
+    public function getStreet(): ?string {
         return $this->street;
     }
 
-    public function getHouseNumber(): ?int
-    {
+    public function getHouseNumber(): ?int {
         return $this->houseNumber;
     }
 
-    public function getPostalCode(): string
-    {
+    public function getPostalCode(): string {
         return $this->postalCode;
     }
 
-    public function getCity(): string
-    {
+    public function getCity(): string {
         return $this->city;
     }
 
-    public function getCountry(): string
-    {
+    public function getCountry(): string {
         return $this->country;
     }
 
     /**
      * @return array<string, string|int|null>
      */
-    public function get(): array
-    {
+    public function get(): array {
         return [
             'type' => $this->type,
             'street' => $this->street,

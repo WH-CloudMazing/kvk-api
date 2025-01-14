@@ -1,15 +1,13 @@
 <?php
 
-namespace Vormkracht10\KvKApi;
+namespace Mantix\KvkApi;
 
 use GuzzleHttp\Client;
-use Vormkracht10\KvKApi\Client as KvKApiClient;
+use Mantix\KvkApi\Client as KvkApiClient;
 
-class ClientFactory
-{
-    public static function create(string $apiKey, ?string $rootCertificate = null): KvKApiClient
-    {
-        return new KvKApiClient(
+class ClientFactory {
+    public static function create(string $apiKey, ?string $rootCertificate = null): KvkApiClient {
+        return new KvkApiClient(
             self::createHttpClient($apiKey, $rootCertificate)
         );
     }
