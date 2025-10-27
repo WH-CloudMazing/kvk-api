@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to this project `mantix/kvk-api` will be documented in this file.
+All notable changes to this project `cloudmazing/kvk-api` will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
@@ -43,7 +43,7 @@ This package is a fork of `vormkracht10/kvk-api` and continues development under
 ## Credits
 
 - Original package by [Vormkracht10](https://github.com/vormkracht10/kvk-api)
-- Fork maintained by [Mantix](https://github.com/mantix)
+- Fork maintained by [Mantix](https://github.com/WH-CloudMazing)
 
 ## License
 

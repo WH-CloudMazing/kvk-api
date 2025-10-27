@@ -1,5 +1,5 @@
 {
-    "name": "mantix/kvk-api",
+    "name": "cloudmazing/kvk-api",
     "description": "KvK API client (Dutch Chamber of Commerce API)",
     "keywords": [
         "Mantix",
@@ -8,7 +8,7 @@
         "chamber-of-commerce",
         "api-client"
     ],
-    "homepage": "https://github.com/mantix/kvk-api",
+    "homepage": "https://github.com/WH-CloudMazing/kvk-api",
     "license": "MIT",
     "authors": [
         {

@@ -1,8 +1,8 @@
 # KvK API Client (Dutch Chamber of Commerce)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/mantix/kvk-api.svg?style=flat-square)](https://packagist.org/packages/mantix/kvk-api)
-[![Tests](https://github.com/mantix/kvk-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/mantix/kvk-api/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/mantix/kvk-api.svg?style=flat-square)](https://packagist.org/packages/mantix/kvk-api)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/cloudmazing/kvk-api.svg?style=flat-square)](https://packagist.org/packages/cloudmazing/kvk-api)
+[![Tests](https://github.com/WH-CloudMazing/kvk-api/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/WH-CloudMazing/kvk-api/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/cloudmazing/kvk-api.svg?style=flat-square)](https://packagist.org/packages/cloudmazing/kvk-api)
 
 A robust PHP package for interacting with the Dutch Chamber of Commerce (KvK) API. This package is a fork of `vormkracht10/kvk-api` with additional features and improvements.
 
@@ -37,7 +37,7 @@ For each company, you can retrieve:
 Install the package via Composer:
 
 ```bash
-composer require mantix/kvk-api
+composer require cloudmazing/kvk-api
 ```
 
 Required dependencies:
