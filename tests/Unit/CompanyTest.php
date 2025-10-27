@@ -1,9 +1,9 @@
 <?php
 
-namespace Mantix\KvkApi\Tests\Unit;
+namespace Cloudmazing\KvkApi\Tests\Unit;
 
-use Mantix\KvkApi\Company\Address;
-use Mantix\KvkApi\Company\Company;
+use Cloudmazing\KvkApi\Company\Address;
+use Cloudmazing\KvkApi\Company\Company;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 

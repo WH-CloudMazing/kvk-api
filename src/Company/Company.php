@@ -1,6 +1,6 @@
 <?php
 
-namespace Mantix\KvkApi\Company;
+namespace Cloudmazing\KvkApi\Company;
 
 class Company {
     private string $kvkNumber;

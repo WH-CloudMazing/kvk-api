@@ -1,9 +1,9 @@
 <?php
 
-namespace Mantix\KvkApi;
+namespace Cloudmazing\KvkApi;
 
 use GuzzleHttp\Client;
-use Mantix\KvkApi\Client as KvkApiClient;
+use Cloudmazing\KvkApi\Client as KvkApiClient;
 
 class ClientFactory {
     public static function create(string $apiKey, ?string $rootCertificate = null): KvkApiClient {

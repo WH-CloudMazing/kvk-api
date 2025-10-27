@@ -32,7 +32,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mantix\\KvkApi\\": "src"
+            "Cloudmazing\\KvkApi\\": "src"
         }
     },
     "autoload-dev": {

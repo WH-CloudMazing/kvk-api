@@ -1,9 +1,9 @@
 <?php
 
-namespace Mantix\KvkApi;
+namespace Cloudmazing\KvkApi;
 
-use Mantix\KvkApi\Company\Company;
-use Mantix\KvkApi\Exceptions\KvkApiException;
+use Cloudmazing\KvkApi\Company\Company;
+use Cloudmazing\KvkApi\Exceptions\KvkApiException;
 
 interface KvkApiClientInterface {
     /**

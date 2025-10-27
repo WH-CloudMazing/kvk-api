@@ -1,10 +1,10 @@
 <?php
 
-namespace Mantix\KvkApi\Tests\Unit;
+namespace Cloudmazing\KvkApi\Tests\Unit;
 
 use GuzzleHttp\ClientInterface;
-use Mantix\KvkApi\Client;
-use Mantix\KvkApi\Exceptions\KvkApiException;
+use Cloudmazing\KvkApi\Client;
+use Cloudmazing\KvkApi\Exceptions\KvkApiException;
 use Mockery;
 use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;

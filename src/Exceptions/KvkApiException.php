@@ -1,6 +1,6 @@
 <?php
 
-namespace Mantix\KvkApi\Exceptions;
+namespace Cloudmazing\KvkApi\Exceptions;
 
 class KvkApiException extends \Exception {
 }

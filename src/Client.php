@@ -1,13 +1,13 @@
 <?php
 
-namespace Mantix\KvkApi;
+namespace Cloudmazing\KvkApi;
 
 use GuzzleHttp\ClientInterface;
 use Illuminate\Support\Collection;
 use Psr\Http\Message\ResponseInterface;
 use stdClass;
-use Mantix\KvkApi\Company\Company;
-use Mantix\KvkApi\Exceptions\KvkApiException;
+use Cloudmazing\KvkApi\Company\Company;
+use Cloudmazing\KvkApi\Exceptions\KvkApiException;
 
 class Client implements KvkApiClientInterface {
     private const ENDPOINTS = [
@@ -32,7 +32,7 @@ class Client implements KvkApiClientInterface {
 
     /**
      * Search companies by name
-     * 
+     *
      * @param array<string, mixed> $params Additional search parameters
      * @return array<Company>
      * @throws KvkApiException
@@ -75,7 +75,7 @@ class Client implements KvkApiClientInterface {
 
     /**
      * Get company base profile by KvK number
-     * 
+     *
      * @throws KvkApiException
      */
     public function getBaseProfile(string $kvkNumber): Company {
@@ -186,7 +186,7 @@ class Client implements KvkApiClientInterface {
 
     /**
      * Format addresses from KVK API response
-     * 
+     *
      * @param array<mixed>|null $addresses Raw address data from API
      * @return array<\stdClass>|null Formatted address objects
      * @throws \InvalidArgumentException When address data is malformed

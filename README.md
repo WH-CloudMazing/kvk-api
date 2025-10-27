@@ -52,7 +52,7 @@ composer require guzzlehttp/guzzle
 First, obtain your API key from the [KvK Developer Portal](https://developers.kvk.nl/).
 
 ```php
-use Mantix\KvkApi\ClientFactory;
+use Cloudmazing\KvkApi\ClientFactory;
 
 $apiKey = '<YOUR_KVK_API_KEY>';
 $kvk = ClientFactory::create($apiKey);
@@ -110,7 +110,7 @@ $kvk = ClientFactory::create($apiKey, $rootCertificate);
 The package includes comprehensive error handling:
 
 ```php
-use Mantix\KvkApi\Exceptions\KvkApiException;
+use Cloudmazing\KvkApi\Exceptions\KvkApiException;
 
 try {
     $companies = $kvk->search('Mantix');
