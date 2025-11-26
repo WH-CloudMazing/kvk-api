@@ -41,10 +41,13 @@ class Client implements KvkApiClientInterface {
         $this->results = []; // Reset results for new search
 
         $queryParams = array_merge([
-            'naam' => $search,
             'pagina' => $this->page,
             'resultatenPerPagina' => $this->resultsPerPage,
         ], $params);
+
+        if ($search !== '') {
+            $queryParams['naam'] = $search;
+        }
 
         try {
             $data = $this->getData($queryParams);
